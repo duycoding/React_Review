@@ -9,11 +9,18 @@ class App extends React.Component {
 		name: 'Duy vip pro',
 		age: 20,
 	}
+
+	handleClick = () => {
+		console.log('click')
+		this.setState({ name: 'anh duy dep trai' })
+	}
+
 	render() {
 		return (
 			<div>
 				<MyComponent />
 				<FunctionComponent name={this.state.name} />
+				<button onClick={this.handleClick}>click me</button>
 			</div>
 		)
 	}
