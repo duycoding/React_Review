@@ -1,13 +1,26 @@
 import React from 'react'
 
 export default function FunctionComponent({ name, age }) {
-	const handleClick = () => {
-		console.log('click 2')
+	let data = {
+		name: '',
+		email: '',
 	}
+
+	const handleClick = (event) => {
+		console.log(event.target.value)
+	}
+
 	return (
 		<>
 			<h2>This is function {name}</h2>
-			<button onClick={handleClick}>click 2</button>
+			<form>
+				<input
+					type="text"
+					onChange={(event) => {
+						handleClick(event)
+					}}></input>
+				<button>Submit</button>
+			</form>
 		</>
 	)
 }

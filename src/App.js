@@ -1,29 +1,19 @@
-import logo from './logo.svg'
-import './App.css'
-import MyComponent from './components/MyComponent'
-import FunctionComponent from './components/FunctionComponent'
+// App.js
 import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { increment, decrement } from './redux/action.js'
 
-class App extends React.Component {
-	state = {
-		name: 'Duy vip pro',
-		age: 20,
-	}
+const App = () => {
+	const count = useSelector((state) => state.count)
+	const dispatch = useDispatch()
 
-	handleClick = () => {
-		console.log('click')
-		this.setState({ name: 'anh duy dep trai' })
-	}
-
-	render() {
-		return (
-			<div>
-				<MyComponent />
-				<FunctionComponent name={this.state.name} />
-				<button onClick={this.handleClick}>click me</button>
-			</div>
-		)
-	}
+	return (
+		<div>
+			<h1>Count: {count}</h1>
+			<button onClick={() => dispatch(increment())}>Increment</button>
+			<button onClick={() => dispatch(decrement())}>Decrement</button>
+		</div>
+	)
 }
 
 export default App
